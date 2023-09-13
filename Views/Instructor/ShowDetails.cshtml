@@ -1,0 +1,51 @@
+﻿
+
+@model Instructor;
+
+<h1>Show Details</h1>
+<div>
+<table class="table table-light">
+    <tr>
+        <th>ID</th>
+        <td>@Model.InstructorId</td>
+     </tr>
+
+      <tr>
+        <th>Firstname</th>
+        <td>@Model.InstructorFirstName</td>
+     </tr>
+     <tr>
+        <th>Lastname</th>
+        <td>@Model.InstructorLastName</td>
+     </tr>
+     <tr>
+         <th>Rank</th>
+         <td>@Model.Rank</td>
+     </tr>
+     <tr>
+         <th>Hiring Date</th>
+         <td>
+                @{
+                    var DateHired = Model.HiringDate;
+                    string HiringDate = String.Format("{0:dd/MM/yyyy}", DateHired);
+                }
+                @HiringDate
+         </td>
+     </tr>
+     <tr>
+        <th>Status</th>
+        <td>
+            @{
+                if (@Model.IsTenured == true)
+                {
+                    <span>Full-Time</span>
+                }
+                else
+                {
+                    <span>Part-Time</span>
+                }
+            }
+        </td>
+     </tr>
+</table>
+</div>

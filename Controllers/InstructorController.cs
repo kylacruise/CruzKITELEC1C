@@ -8,23 +8,45 @@ namespace CruzKITELEC1C.Controllers
         {
             new Instructor()
             {
-                InstructorName = "Gabriel Montano", DateHired = DateTime.Now,
-                InstructorEmail = "gbmontano@ust.edu.ph", Rank = Rank.Instructor
+                InstructorId = 1,
+                InstructorFirstName = "Gabriel", InstructorLastName = "Montano", HiringDate = DateTime.Now,
+                IsTenured = true, Rank = Rank.Instructor
             },
             new Instructor()
             {
-                InstructorName = "Leo Lintag", DateHired = DateTime.Parse("25/2/2000"),
-                InstructorEmail = "leolintag@ust.edu.ph", Rank = Rank.AssistProf
+                InstructorId = 2,
+                InstructorFirstName = "Leo", InstructorLastName = "Lintag", HiringDate = DateTime.Parse("25/2/2000").Date,
+                IsTenured = true, Rank = Rank.AssistantProfessor
             },
             new Instructor()
             {
-                InstructorName = "Mark Calina", DateHired = DateTime.Parse("25/3/2000"),
-                InstructorEmail = "mcalina@ust.edu.ph", Rank = Rank.Prof
+                InstructorId = 3,
+                InstructorFirstName = "Amado", InstructorLastName = "Sapit",  HiringDate = DateTime.Parse("25/3/2000").Date,
+                IsTenured = false, Rank = Rank.AssociateProfessor
             },
+            new Instructor()
+            {
+                InstructorId = 4,
+                InstructorFirstName = "Bernard", InstructorLastName = "Sanidad", HiringDate = DateTime.Parse("1/1/2015").Date,
+                IsTenured = false, Rank = Rank.Professor
+            }
+
         };
         public IActionResult Index()
         {
             return View(InstructorsList);
+        }
+
+        public IActionResult ShowDetails(int id)
+        {
+
+
+            Instructor instructor = InstructorsList.FirstOrDefault(t => t.InstructorId == id);
+            if (instructor != null)
+            {
+                return View(instructor);
+            }
+            return NotFound();
         }
     }
 }

@@ -2,25 +2,46 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @model IEnumerable<CruzKITELEC1C.Models.Instructor>
+@{    
+}
+<h1>Lab Activity</h1>
 
-<h1>Instructor List</h1>
-
-<table>
+<div>
+<table class="table table-light">
+    
     <tr>
-        <th>Name:</th>
-        <th>Email:</th>
-        <th>Date Hired:</th>
-        <th>Rank:</th>
+        <th>ID</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Rank</th>
+        <th>Hiring Date</th>
+        <th>Status</th>
     </tr>
     @{
         foreach(var inst in Model)
         {
             <tr>
-                <td>@inst.InstructorName</td>
-                <td>@inst.InstructorEmail</td>
-                <td>@inst.DateHired</td>
+                <td>@inst.InstructorId</td>
+                <td>@inst.InstructorFirstName</td>
+                <td>@inst.InstructorLastName</td>
                 <td>@inst.Rank</td>
+                <td>@inst.HiringDate</td>
+                <td>@{
+                        if(inst.IsTenured == true)
+                        {
+                            <span>Full-Time</span>
+                        }
+                        else
+                        {
+                            <span>Part-Time</span>
+                        }
+                    }
+                </td>
+                <td>
+                    <a  asp-action="ShowDetails" asp-route-id="@inst.InstructorId">Show Details</a>
+                </td>
             </tr>
         }
     }   
 </table>
+</div>

@@ -1,0 +1,62 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Student;
+
+<h1>Update Student</h1>
+
+
+<form asp-action="UpdateStudent" asp-controller="Student" method="post">
+    <div class="form-group row">
+        <label asp-for="Id" class="col-sm-2 col-form-label" hidden>ID</label>
+        <div class="col-sm-10">
+            <input asp-for="Id" class="form-control" hidden><br />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="FirstName" class="col-sm-2 col-form-label">Firstname</label>
+        <div class="col-sm-10">
+            <input asp-for="FirstName" class="form-control"><br />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="LastName" class="col-sm-2 col-form-label">Lastname:</label>
+        <div class="col-sm-10">
+            <input asp-for="LastName" class="form-control"><br />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="Email" class="col-sm-2 col-form-label">Email:</label>
+        <div class="col-sm-10">
+            <input asp-for="Email" class="form-control"><br />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="Course" class="col-sm-2 col-form-label">Course:</label>
+        <div class="col-sm-10">
+            <select asp-for="Course" asp-items="@Html.GetEnumSelectList(typeof(Course))" class="form-control" class="form-control"></select><br />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="AdmissionDate" class="col-sm-2 col-form-label">Date Enrolled:</label>
+        <div class="col-sm-10">
+            <input asp-for="AdmissionDate" class="form-control"><br />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="GPA" class="col-sm-2 col-form-label">GPA:</label>
+        <div class="col-sm-10">
+            <input asp-for="GPA" class="form-control"><br />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="button" onClick="history.back()" class="btn btn-primary">Cancel</button>
+</form>
+</div>

@@ -48,5 +48,42 @@ namespace CruzKITELEC1C.Controllers
             }
             return NotFound();
         }
+
+        [HttpGet]
+        public IActionResult AddInstructor()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddInstructor(Instructor newInstructor)
+        {
+            InstructorsList.Add(newInstructor);
+            return View("Index", InstructorsList);
+        }
+
+        [HttpGet]
+        public IActionResult UpdateInstructor(int id)
+        {
+            Instructor? instructor = InstructorsList.FirstOrDefault(t => t.InstructorId == id);
+
+            if (instructor != null)
+                return View(instructor);
+
+            return NotFound();
+        }
+
+        [HttpPost]
+        public IActionResult UpdateInstructor(Instructor instructorChanges)
+        {
+            Instructor? instructor = InstructorsList.FirstOrDefault(t => t.InstructorId == instructorChanges.InstructorId);
+            if (instructor != null)
+            {
+                instructor.InstructorFirstName = instructorChanges.InstructorFirstName;
+                instructor.InstructorLastName = instructorChanges.InstructorLastName;
+                instructor.Rank = instructorChanges.Rank;
+                instructor.HiringDate = instructorChanges.HiringDate;
+            }
+            return View("Index", InstructorsList);
+        }
     }
 }

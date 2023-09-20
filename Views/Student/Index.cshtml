@@ -4,24 +4,28 @@
 @{
 }
 <h1>Student List</h1>
+<a class="btn btn-primary" asp-action="AddStudent">Add Student</a>
 
-<div>
 <table class="table table-light">
     <tr>
         <td>Name</td>
-        <td>@ViewBag.student.StudentName</td>
-    </tr>
-    <tr>
-        <td>Date Enrolled</td>
-        <td>@ViewBag.student.DateEnrolled</td>
-    </tr>
-    <tr>
         <td>Course</td>
-        <td>@ViewBag.student.Course</td>
-    </tr>
-    <tr>
+        <td>Date Enrolled</td>
         <td>Email</td>
-        <td>@ViewBag.student.Email</td>
+        <td>GPA</td>
+        <td>Details</td>
+        <td>Update</td>
     </tr>
+    @foreach (var student in Model)
+    {
+        <tr>
+            <td>@student.FirstName @student.LastName</td>
+            <td>@student.Course</td>
+            <td>@student.AdmissionDate</td>
+            <td>@student.Email</td>
+            <td>@student.GPA</td>
+            <td><a class="btn btn-primary" asp-action="ShowDetails" asp-route-id="@student.Id">Show Details</a></td>
+            <td><a class="btn btn-primary" asp-action="UpdateStudent" asp-route-id="@student.Id">Update</a></td>
+        </tr>
+    }
 </table>
-</div>

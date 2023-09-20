@@ -4,7 +4,8 @@
 @model IEnumerable<CruzKITELEC1C.Models.Instructor>
 @{    
 }
-<h1>Lab Activity</h1>
+<h1>Instructor List</h1>
+<a class="btn btn-primary" asp-action="AddInstructor">Add Instructor</a>
 
 <div>
 <table class="table table-light">
@@ -16,6 +17,8 @@
         <th>Rank</th>
         <th>Hiring Date</th>
         <th>Status</th>
+        <th>Show Details</th>
+        <th>Update</th>
     </tr>
     @{
         foreach(var inst in Model)
@@ -37,9 +40,8 @@
                         }
                     }
                 </td>
-                <td>
-                    <a  asp-action="ShowDetails" asp-route-id="@inst.InstructorId">Show Details</a>
-                </td>
+                <td><a class="btn btn-primary" asp-action="ShowDetails" asp-route-id="@inst.InstructorId">Show Details</a></td>
+                <td><a class="btn btn-primary" asp-action="UpdateInstructor" asp-route-id="@inst.InstructorId">Update</a></td>
             </tr>
         }
     }   
